@@ -1,0 +1,29 @@
+# Template for Processing sketches.
+
+ballSize = 30
+rectDimension = PVector(30, 100)
+radius = ballSize / 2
+
+def setup():
+    size(600, 400)
+
+def draw():
+    global ballSize
+    global radius
+    
+    background(255)
+    
+    player = PVector(mouseX, mouseY)
+    
+# Player
+    ellipse(player.x, player.y, ballSize, ballSize)
+    
+# Obstacle 1
+    rect(100, 0, rectDimension.x, rectDimension.y)
+    
+# Collision for top of player and obstacle
+    topBall = player.y - radius
+    if topBall <= rectDimension.y:
+        print("collision")
+    elif topBall > rectDimension.y:
+        print("Not")
