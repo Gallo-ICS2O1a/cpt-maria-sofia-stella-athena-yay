@@ -20,10 +20,18 @@ def draw():
     
 # Obstacle 1
     rect(100, 0, rectDimension.x, rectDimension.y)
+    rect(100, 180, rectDimension.x, height)
     
-# Collision for top of player and obstacle
-    topBall = player.y - radius
-    if topBall <= rectDimension.y:
-        print("collision")
-    elif topBall > rectDimension.y:
+# Collision for Top of Player and Bottom of Bbstacle
+ #   topBall = player.y - radius
+  #  if topBall <= rectDimension.y:
+   #     print("collision")
+    #else:
         print("Not")
+
+# Collision for Bottom of Player and Top of Obstacle
+    bottomBall = player.y + radius
+    if bottomBall >= (height - (height - 180)) or topBall <= rectDimension.y:
+        print("collision")
+    else:
+    print("Not")
