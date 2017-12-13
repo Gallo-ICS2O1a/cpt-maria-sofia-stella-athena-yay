@@ -2,6 +2,8 @@
 
 ballSize = 30
 rectDimension = PVector(30, 100)
+rectLocation_1 = PVector(150, 0)
+rectLocation_2 = PVector(150, 180)
 radius = ballSize / 2
 
 def setup():
@@ -19,8 +21,8 @@ def draw():
     ellipse(player.x, player.y, ballSize, ballSize)
     
 # Obstacle 1
-    rect(100, 0, rectDimension.x, rectDimension.y)
-    rect(100, 180, rectDimension.x, height)
+    rect(rectLocation_1.x, rectLocation_1.y, rectDimension.x, rectDimension.y)
+    rect(rectLocation_2.x, rectLocation_2.y, rectDimension.x, height)
     
 # Collision for Top of Player and Bottom of Bbstacle
  #   topBall = player.y - radius
@@ -45,7 +47,7 @@ def draw():
 
 #Collision for Right of Player and Left of Obstacle
     rightBall = player.x + radius
-    if (rightBall >= 100 and leftBall <= (rectDimension.x + 100)) and (bottomBall >= (height - (height - 180)) or  topBall <= rectDimension.y):
+    if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + rectDimension.x)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= rectDimension.y):
         print("collision")
     else:
         print("not")
