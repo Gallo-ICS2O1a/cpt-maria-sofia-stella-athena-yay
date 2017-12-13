@@ -35,3 +35,17 @@ def draw():
         print("collision")
     else:
     print("Not")
+
+#Collision for Left of Player and Right of Obstacle
+    leftBall = player.x - radius
+ #   if leftBall <= (rectDimension.x + 100) and (bottomBall >= (height - 220) or  topBall <= rectDimension.y):
+  #      print("collision")
+   # else:
+    #    print("not")
+
+#Collision for Right of Player and Left of Obstacle
+    rightBall = player.x + radius
+    if (rightBall >= 100 and leftBall <= (rectDimension.x + 100)) and (bottomBall >= (height - (height - 180)) or  topBall <= rectDimension.y):
+        print("collision")
+    else:
+        print("not")
