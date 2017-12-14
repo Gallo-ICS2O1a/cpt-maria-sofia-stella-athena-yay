@@ -29,7 +29,7 @@ def draw():
   #  if topBall <= rectDimension.y:
    #     print("collision")
     #else:
-        print("Not")
+      # print("Not")
 
 # Collision for Bottom of Player and Top of Obstacle
     bottomBall = player.y + radius
