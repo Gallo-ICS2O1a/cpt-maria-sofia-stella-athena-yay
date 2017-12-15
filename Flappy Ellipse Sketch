@@ -41,53 +41,6 @@ def draw():
     leftBall = player.x - radius
     rightBall = player.x + radius
 
-# Obstacle 1
-    rect(rectLocation_1.x, rectLocation_1.y, 30, 100)
-    rect(rectLocation_2.x, rectLocation_2.y, 30, height)
-    
-# Collision for Obstacle 1
-    if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 100):
-        print("collision")
-    else:
-        print("not")
-
-# Obstacle 2
-    rect(rectPos.x, rectPos.y, 30, 275)
-
-# Collision for Obstacle 2
-    if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
-        print("Two collision")
-    else:
-        print("not")
-
-# Obstacle 3
-    rect(rectPos_2.x, rectPos_2.y, 30, height)
-
-# Collision for Obstacle 3
-    if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
-        print("Three collision")
-    else:
-        print("not")
-
-# Obstacle 4
-    rect(rectPos_3.x, rectPos_3.y, 30, 220)
-    rect(rectPos_4.x, rectPos_4.y, 30, height)
-    
-# Collsion for Obstacle 4
-    if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
-        print("Four collision")
-    else:
-        print("not")
-
-# Obstacle 5
-    rect(rectPos_5.x, rectPos_5.y, 30, 275)
-
-# Collision for Obstacle 5
-    if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
-        print("Five collision")
-    else:
-        print("not")
-
 # Make Obstacle 1 Reappear
     if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
         rectLocation_1.x = rectPos_5.x + 180
@@ -101,6 +54,72 @@ def draw():
         rectPos_4.x = rectPos_2.x + 180
     elif (rectPos_5.x + 30) < 0:
         rectPos_5.x = rectPos_4.x + 180 
+
+# Obstacle 1
+    rect(rectLocation_1.x, rectLocation_1.y, 30, 100)
+    rect(rectLocation_2.x, rectLocation_2.y, 30, height)
+    
+# Collision for Obstacle 1
+    if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 100):
+        print("collision")
+        speed = 0
+    else:
+        print("not")
+
+# Obstacle 2
+    rect(rectPos.x, rectPos.y, 30, 275)
+
+# Collision for Obstacle 2
+    if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
+        print("Two collision")
+        speed = 0
+    else:
+        print("not")
+
+# Obstacle 3
+    rect(rectPos_2.x, rectPos_2.y, 30, height)
+
+# Collision for Obstacle 3
+    if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
+        print("Three collision")
+        speed = 0
+    else:
+        print("not")
+
+# Obstacle 4
+    rect(rectPos_3.x, rectPos_3.y, 30, 220)
+    rect(rectPos_4.x, rectPos_4.y, 30, height)
+    
+# Collsion for Obstacle 4
+    if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
+        print("Four collision")
+        speed = 0
+    else:
+        print("not")
+
+# Obstacle 5
+    rect(rectPos_5.x, rectPos_5.y, 30, 275)
+
+# Collision for Obstacle 5
+    if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
+        print("Five collision")
+        speed = 0
+    else:
+        print("not")
+
+# Make Obstacle 1 Reappear
+#    if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
+ #       rectLocation_1.x = rectPos_5.x + 180
+  #      rectLocation_2.x = rectPos_5.x + 180
+   # elif (rectPos.x + 30) < 0:
+    #    rectPos.x = rectLocation_1.x + 180
+#    elif (rectPos_2.x + 30) < 0:
+ #        rectPos_2.x = rectPos.x + 180
+  #  elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
+   #     rectPos_3.x = rectPos_2.x + 180
+    #    rectPos_4.x = rectPos_2.x + 180
+    #elif (rectPos_5.x + 30) < 0:
+     #   rectPos_5.x = rectPos_4.x + 180 
 
 # Obstacles Move When Player Crosses Point
     if player.x >= 190:
