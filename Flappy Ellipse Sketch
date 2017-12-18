@@ -56,7 +56,15 @@ def draw():
         text("Instructions", 420, 225)     
         
     #Instructions screen
-        
+    if screen == "Instructions":
+        background(0)
+        fill(255)
+        textSize(90)
+        text("Instructions", 175, 100)
+        textSize(30)
+        text("""1. Click the mouse to jump.
+2. Avoid the obstacles
+3. If the ball hits the obstacles, GAME OVER""", 175, 175)
         
     if screen == "gamescreen":
         # Game Screen    
@@ -171,6 +179,4 @@ def mousePressed():
         screen = "gamescreen"
     # Press instructions button
     if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
-        screen = "instructions"
-                
-                
+        screen = "Instructions"
