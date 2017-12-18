@@ -134,8 +134,8 @@ def draw():
 # Border Restrictions
     if topBall <= 0 or bottomBall >= height:
         print("GAME OVER")
-
-# attemp at a start screen
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+# attempt at a start screen
 intro = True
     
 def setup():    
