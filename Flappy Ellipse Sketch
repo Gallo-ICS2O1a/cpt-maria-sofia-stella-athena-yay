@@ -16,9 +16,12 @@ rectPos_4 = PVector(690, 300)
 rectPos_5 = PVector(870, 0)
 # Speed of Obstacles
 speed = 1
+#Screen
+screen = "startscreen"
 
 def setup():
     size(900, 400)
+
 
 def draw():
     global ballSize
@@ -26,111 +29,148 @@ def draw():
     global rectLocation_1
     global rectLocation_2
     global speed
-
+    global screen
     
     background(255)
     
-    player = PVector(mouseX, mouseY)
-    
-# Player
-    ellipse(player.x, player.y, ballSize, ballSize)
-    
-# Player Sizes
-    topBall = player.y - radius
-    bottomBall = player.y + radius
-    leftBall = player.x - radius
-    rightBall = player.x + radius
+    #Start Screen
+    if screen == "startscreen":
+        background(0)
+        
+        fill(255)
+        textSize(90)
+        text("Flappy Ellipse", 175, 100)
+        
+        # Start button
+        fill(0)
+        rect(420, 150, 70, 30)
+        fill(255)
+        textSize(30)
+        text("Start", 420, 175)
+        
+        # Instruction button
+        fill(0)
+        rect(420, 200, 170, 30)
+        fill(255)
+        textSize(30)
+        text("Instructions", 420, 225)     
+        
+    #Instructions screen
+        
+        
+    if screen == "gamescreen":
+        # Game Screen    
+        # Player
+            player = PVector(mouseX, mouseY)
+            ellipse(player.x, player.y, ballSize, ballSize)
+            
+        # Player Sizes
+            topBall = player.y - radius
+            bottomBall = player.y + radius
+            leftBall = player.x - radius
+            rightBall = player.x + radius
+        
+        # Make Obstacle 1 Reappear
+            if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
+                rectLocation_1.x = rectPos_5.x + 180
+                rectLocation_2.x = rectPos_5.x + 180
+            elif (rectPos.x + 30) < 0:
+                rectPos.x = rectLocation_1.x + 180
+            elif (rectPos_2.x + 30) < 0:
+                rectPos_2.x = rectPos.x + 180
+            elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
+                rectPos_3.x = rectPos_2.x + 180
+                rectPos_4.x = rectPos_2.x + 180
+            elif (rectPos_5.x + 30) < 0:
+                rectPos_5.x = rectPos_4.x + 180 
+        
+        # Obstacle 1
+            rect(rectLocation_1.x, rectLocation_1.y, 30, 100)
+            rect(rectLocation_2.x, rectLocation_2.y, 30, height)
+            
+        # Collision for Obstacle 1
+            if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 100):
+                print("collision")
+                speed = 0
+            else:
+                print("not")
+        
+        # Obstacle 2
+            rect(rectPos.x, rectPos.y, 30, 275)
+        
+        # Collision for Obstacle 2
+            if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
+                print("Two collision")
+                speed = 0
+            else:
+                print("not")
+        
+        # Obstacle 3
+            rect(rectPos_2.x, rectPos_2.y, 30, height)
+        
+        # Collision for Obstacle 3
+            if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
+                print("Three collision")
+                speed = 0
+            else:
+                print("not")
+        
+        # Obstacle 4
+            rect(rectPos_3.x, rectPos_3.y, 30, 220)
+            rect(rectPos_4.x, rectPos_4.y, 30, height)
+            
+        # Collsion for Obstacle 4
+            if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
+                print("Four collision")
+                speed = 0
+            else:
+                print("not")
+        
+        # Obstacle 5
+            rect(rectPos_5.x, rectPos_5.y, 30, 275)
+        
+        # Collision for Obstacle 5
+            if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
+                print("Five collision")
+                speed = 0
+            else:
+                print("not")
+        
+        # Make Obstacle 1 Reappear
+        #    if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
+        #       rectLocation_1.x = rectPos_5.x + 180
+        #      rectLocation_2.x = rectPos_5.x + 180
+        # elif (rectPos.x + 30) < 0:
+            #    rectPos.x = rectLocation_1.x + 180
+        #    elif (rectPos_2.x + 30) < 0:
+        #        rectPos_2.x = rectPos.x + 180
+        #  elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
+        #     rectPos_3.x = rectPos_2.x + 180
+            #    rectPos_4.x = rectPos_2.x + 180
+            #elif (rectPos_5.x + 30) < 0:
+            #   rectPos_5.x = rectPos_4.x + 180 
+        
+        # Obstacles Move When Player Crosses Point
+            if player.x >= 190:
+                rectLocation_1.x += -speed
+                rectLocation_2.x += -speed
+                rectPos.x += -speed
+                rectPos_2.x += -speed
+                rectPos_3.x += -speed
+                rectPos_4.x += -speed
+                rectPos_5.x += -speed
+        
+        # Border Restrictions
+            if topBall <= 0 or bottomBall >= height:
+                print("GAME OVER")
 
-# Make Obstacle 1 Reappear
-    if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
-        rectLocation_1.x = rectPos_5.x + 180
-        rectLocation_2.x = rectPos_5.x + 180
-    elif (rectPos.x + 30) < 0:
-        rectPos.x = rectLocation_1.x + 180
-    elif (rectPos_2.x + 30) < 0:
-        rectPos_2.x = rectPos.x + 180
-    elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
-        rectPos_3.x = rectPos_2.x + 180
-        rectPos_4.x = rectPos_2.x + 180
-    elif (rectPos_5.x + 30) < 0:
-        rectPos_5.x = rectPos_4.x + 180 
-
-# Obstacle 1
-    rect(rectLocation_1.x, rectLocation_1.y, 30, 100)
-    rect(rectLocation_2.x, rectLocation_2.y, 30, height)
-    
-# Collision for Obstacle 1
-    if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 100):
-        print("collision")
-        speed = 0
-    else:
-        print("not")
-
-# Obstacle 2
-    rect(rectPos.x, rectPos.y, 30, 275)
-
-# Collision for Obstacle 2
-    if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
-        print("Two collision")
-        speed = 0
-    else:
-        print("not")
-
-# Obstacle 3
-    rect(rectPos_2.x, rectPos_2.y, 30, height)
-
-# Collision for Obstacle 3
-    if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
-        print("Three collision")
-        speed = 0
-    else:
-        print("not")
-
-# Obstacle 4
-    rect(rectPos_3.x, rectPos_3.y, 30, 220)
-    rect(rectPos_4.x, rectPos_4.y, 30, height)
-    
-# Collsion for Obstacle 4
-    if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
-        print("Four collision")
-        speed = 0
-    else:
-        print("not")
-
-# Obstacle 5
-    rect(rectPos_5.x, rectPos_5.y, 30, 275)
-
-# Collision for Obstacle 5
-    if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
-        print("Five collision")
-        speed = 0
-    else:
-        print("not")
-
-# Make Obstacle 1 Reappear
-#    if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
- #       rectLocation_1.x = rectPos_5.x + 180
-  #      rectLocation_2.x = rectPos_5.x + 180
-   # elif (rectPos.x + 30) < 0:
-    #    rectPos.x = rectLocation_1.x + 180
-#    elif (rectPos_2.x + 30) < 0:
- #        rectPos_2.x = rectPos.x + 180
-  #  elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
-   #     rectPos_3.x = rectPos_2.x + 180
-    #    rectPos_4.x = rectPos_2.x + 180
-    #elif (rectPos_5.x + 30) < 0:
-     #   rectPos_5.x = rectPos_4.x + 180 
-
-# Obstacles Move When Player Crosses Point
-    if player.x >= 190:
-        rectLocation_1.x += -speed
-        rectLocation_2.x += -speed
-        rectPos.x += -speed
-        rectPos_2.x += -speed
-        rectPos_3.x += -speed
-        rectPos_4.x += -speed
-        rectPos_5.x += -speed
-
-# Border Restrictions
-    if topBall <= 0 or bottomBall >= height:
-        print("GAME OVER")
+def mousePressed():
+    global screen
+    # Press start button
+    if mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and mouseY >= 150 and screen == "startscreen": 
+        screen = "gamescreen"
+    # Press instructions button
+    if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
+        screen = "instructions"
+                
+                
