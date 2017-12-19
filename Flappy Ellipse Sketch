@@ -83,7 +83,7 @@ def draw():
             leftBall = player.x - radius
             rightBall = player.x + radius
         
-        # Make Obstacle 1 Reappear
+        # Make Obstacles Reappear
             if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
                 rectLocation_1.x = rectPos_5.x + 180
                 rectLocation_2.x = rectPos_5.x + 180
@@ -148,20 +148,6 @@ def draw():
                 speed = 0
             else:
                 print("not")
-        
-        # Make Obstacle 1 Reappear
-        #    if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
-        #       rectLocation_1.x = rectPos_5.x + 180
-        #      rectLocation_2.x = rectPos_5.x + 180
-        # elif (rectPos.x + 30) < 0:
-            #    rectPos.x = rectLocation_1.x + 180
-        #    elif (rectPos_2.x + 30) < 0:
-        #        rectPos_2.x = rectPos.x + 180
-        #  elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
-        #     rectPos_3.x = rectPos_2.x + 180
-            #    rectPos_4.x = rectPos_2.x + 180
-            #elif (rectPos_5.x + 30) < 0:
-            #   rectPos_5.x = rectPos_4.x + 180 
         
         # Obstacles Move When Player Crosses Point
             if player.x >= 190:
