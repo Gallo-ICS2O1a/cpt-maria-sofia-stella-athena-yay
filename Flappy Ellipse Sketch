@@ -20,7 +20,7 @@ speed = 0.7
 player = PVector(50, 200)
 # Speed of Player
 speedP = PVector(1, 2)
-# jump
+jump = -3.5
 # Screen
 screen = "startscreen"
 collision= 0
@@ -36,6 +36,8 @@ def draw():
     global screen
     global speedP
     global player
+    global jump
+    global collision
     
     background(255)
     
@@ -79,6 +81,7 @@ def draw():
         
 # Game Screen
     if screen == "gamescreen":
+        background(255)
 # Player
         fill(255, 0, 0)
         noStroke()
@@ -87,9 +90,8 @@ def draw():
         if mousePressed and player.x < 193:
             player.x += speedP.x
         if mousePressed:
-            player.y += -3.5
-            
-            
+            player.y += jump
+
 # Player Sizes
         topBall = player.y - radius
         bottomBall = player.y + radius
@@ -117,12 +119,7 @@ def draw():
             
 # Collision for Obstacle 1
         if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 90):
-            fill(255, 0, 0)
-            textSize(60)
-            text("GAME OVER", 300, 100)
-            speed = 0
-        else:
-            print("not")
+            collision = 1
         
 # Obstacle 2
         rect(rectPos.x, rectPos.y, 30, 275)
@@ -130,7 +127,6 @@ def draw():
 # Collision for Obstacle 2
         if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
             collision = 1
-            speed = 0
 
         
 # Obstacle 3
@@ -139,7 +135,6 @@ def draw():
 # Collision for Obstacle 3
         if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
             collision = 1
-            speed = 0
     
 # Obstacle 4
         rect(rectPos_3.x, rectPos_3.y, 30, 210)
@@ -148,7 +143,6 @@ def draw():
 # Collsion for Obstacle 4
         if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
             collision = 1
-            speed = 0
         
 # Obstacle 5
         rect(rectPos_5.x, rectPos_5.y, 30, 275)
@@ -156,7 +150,6 @@ def draw():
 # Collision for Obstacle 5
         if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
             collision = 1
-            speed = 0
     
 # Obstacles Move When Player Crosses Point
         if player.x >= 190:
@@ -172,21 +165,40 @@ def draw():
         if topBall <= 0 or bottomBall >= height:
                 collision = 1
         
+# Switch Screens from GAME OVER to whatever
         if collision == 1:
+            speed = 0
+            speedP = PVector(0, 0)
+            jump = 0
             
-                
+    if screen == "gameover":
+        fill(255, 0, 0)
+        textSize(60)
+        text("GAME OVER", 300, 100)
+            
+        textSize(30)
+        text("""Play Again
+Exit""", 350, 150) 
 
-
+                    
 
 def mousePressed():
     global screen
-    # Press start button
+    global collision
+# Press start button
     if mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and mouseY >= 150 and screen == "startscreen": 
         screen = "gamescreen"
-    # Press instructions button
+# Press instructions button
     if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
         screen = "Instructions"
-    #Press back button
+#Press back button
     if mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and mouseY >= 350 and screen == "Instructions": 
-        screen = "startscreen"        
+        screen = "startscreen"       
+# Play again from Game Over screen
+    if mouseX <= 500 and mouseY <= 158 and mouseX >= 350 and mouseY >= 125 and screen == "gameover":
+        screen = "gamescreen"
+# Go to Start Screen by Pressing Exit
+    if mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and mouseY >= 170 and screen == "gameover":
+        screen = "startscreen"
+
 
