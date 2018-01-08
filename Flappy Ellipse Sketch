@@ -1,5 +1,3 @@
-# Template for Processing sketches.
-
 ballSize = 30
 radius = ballSize / 2
 # Obstacle 1 Location
