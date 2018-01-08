@@ -95,7 +95,8 @@ def draw():
         rect(420, 200, 170, 30)
         fill(255)
         textSize(30)
-        text("Instructions", 420, 225)     
+        text("Instructions", 420, 225)  
+        
         
     #Instructions screen
     if screen == "Instructions":
@@ -256,4 +257,3 @@ def mousePressed():
 # Go to Start Screen by Pressing Exit
     if mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and mouseY >= 170 and screen == "gameover":
         screen = "startscreen"
-
