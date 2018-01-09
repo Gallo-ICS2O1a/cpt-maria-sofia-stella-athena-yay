@@ -61,6 +61,8 @@ def reset():
     collision= 0
 # Score
     score = 0
+# Fake Ball
+
 
 def draw():
     global ballSize
@@ -78,11 +80,16 @@ def draw():
     #Start Screen
     if screen == "startscreen":
         background(0)
+        fake = PVector(90, 310)
         
         fill(255)
         textSize(90)
         text("Flappy Ellipse", 175, 100)
         
+        # Fake Ball
+        fill(255, 0, 0)
+        ellipse(fake.x, fake.y, 100, 100)
+                
         # Start button
         fill(0)
         rect(420, 150, 70, 30)
@@ -105,10 +112,9 @@ def draw():
         textSize(90)
         text("Instructions", 175, 100)
         textSize(30)
-        text("""1. Hold the mouse key to jump. 
-    Double-tap to jump (for touchpad).
+        text("""1. Click the mouse to jump. Double-tap the m
 2. Avoid the obstacles
-3. If the ball hits the obstacles, GAME OVER""", 100, 175)
+3. If the ball hits the obstacles, GAME OVER""", 175, 175)
         fill(0)
         rect(50, 350, 100, 30)
         fill(255)
@@ -156,7 +162,7 @@ def draw():
 # Collision for Obstacle 1
         if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 90):
              collision = 1
-# Score for passing Obstacle
+# Score for passing Obstacle 1
         if leftBall + 30 == rectLocation_1.x:
             score += 1
         
@@ -167,7 +173,7 @@ def draw():
         if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
             collision = 1
 # Score for passing Obstacle 2
-        if leftBall == rectPos.x + 30:
+        if leftBall >= rectPos.x + 30 and leftBall <= rectPos.x + 31:
             score += 1
         
 # Obstacle 3
@@ -177,7 +183,7 @@ def draw():
         if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
              collision = 1
 # Score for Passing Obstacle 3
-        if leftBall == rectPos_2.x + 30:
+        if leftBall >= rectPos_2.x + 30 and leftBall <= rectPos_2.x + 31:
             score += 1
     
 # Obstacle 4
@@ -188,7 +194,7 @@ def draw():
         if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
              collision = 1
 # Score for Passing Obstacle 4
-        if leftBall == rectPos_4.x + 30:
+        if leftBall >= rectPos_4.x + 30 and leftBall <= rectPos_4.x + 31:
             score += 1
         
 # Obstacle 5
@@ -198,7 +204,7 @@ def draw():
         if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
             collision = 1
 # Score for Passing Obstacle 5
-        if leftBall == rectPos_5.x + 30:
+        if leftBall >= rectPos_5.x + 30 and leftBall <= rectPos_5.x + 31:
             score += 1
     
 # Obstacles Move When Player Crosses Point
@@ -258,4 +264,3 @@ def mousePressed():
 # Go to Start Screen by Pressing Exit
     if mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and mouseY >= 170 and screen == "gameover":
         screen = "startscreen"
-
