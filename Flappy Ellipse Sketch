@@ -163,7 +163,7 @@ def draw():
         if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 90):
              collision = 1
 # Score for passing Obstacle 1
-        if leftBall + 30 == rectLocation_1.x:
+        if leftBall >= rectLocation_1.x + 30 and leftBall <= rectLocation_1.x +31:
             score += 1
         
 # Obstacle 2
