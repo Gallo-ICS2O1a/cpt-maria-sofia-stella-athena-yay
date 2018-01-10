@@ -1,5 +1,4 @@
 # Template
-
 ballSize = 30
 radius = ballSize / 2
 # Obstacle 1 Location
@@ -271,3 +270,4 @@ def mousePressed():
         screen = "startscreen"
     elif mouseX >= 350 and mouseY >= 170 and screen == "gameover":
         screen = "startscreen"
+
