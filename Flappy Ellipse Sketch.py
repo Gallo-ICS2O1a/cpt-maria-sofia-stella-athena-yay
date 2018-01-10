@@ -1,18 +1,17 @@
-# Template
 ballSize = 30
 radius = ballSize / 2
 # Obstacle 1 Location
-rectLocation_1 = PVector(150, 0)
-rectLocation_2 = PVector(150, 190)
+rectPos = PVector(150, 0)
+rectPos_2 = PVector(150, 190)
 # Obstacle 2 Location
-rectPos = PVector(330, 0)
+rectPos_3 = PVector(330, 0)
 # Obstacle 3
-rectPos_2 = PVector(510, 150)
+rectPos_4 = PVector(510, 150)
 # Obstacle 4
-rectPos_3 = PVector(690, 0)
-rectPos_4 = PVector(690, 310)
+rectPos_5 = PVector(690, 0)
+rectPos_6 = PVector(690, 310)
 #Obstacle 5
-rectPos_5 = PVector(870, 0)
+rectPos_7 = PVector(870, 0)
 # Speed of Obstacles
 speed = 0.7
 #Player
@@ -25,30 +24,32 @@ screen = "startscreen"
 collision= 0
 # Score
 score = 0
+currentobstacle = rectPos.x
 
 def setup():
     size(900, 400)
     
 def reset():
     global player, speed, speedP, jump, screen, collision, score
-    global rectLocation_1, rectLocation_2
-    global rectPos
-    global rectPos_2
-    global rectPos_3, rectPos_4
-    global rectPos_5
+    global rectPos, rectPos_2
+    global rectPos_3
+    global rectPos_4
+    global rectPos_5, rectPos_6
+    global rectPos_7
+    global currentobstacle
     
 # Obstacle 1 Location
-    rectLocation_1 = PVector(150, 0)
-    rectLocation_2 = PVector(150, 190)
+    rectPos = PVector(150, 0)
+    rectPos_2 = PVector(150, 190)
 # Obstacle 2 Location
-    rectPos = PVector(330, 0)
+    rectPos_3 = PVector(330, 0)
 # Obstacle 3
-    rectPos_2 = PVector(510, 150)
+    rectPos_4 = PVector(510, 150)
 # Obstacle 4
-    rectPos_3 = PVector(690, 0)
-    rectPos_4 = PVector(690, 310)
+    rectPos_5 = PVector(690, 0)
+    rectPos_6 = PVector(690, 310)
 #Obstacle 5
-    rectPos_5 = PVector(870, 0)
+    rectPos_7 = PVector(870, 0)
 # Speed of Obstacles
     speed = 0.7
 #Player
@@ -61,6 +62,7 @@ def reset():
     screen= "gamescreen"
 # Score
     score = 0
+    currentobstacle = rectPos.x
 # Fake Ball
 
 
@@ -74,6 +76,7 @@ def draw():
     global jump
     global collision
     global score
+    global currentobstacle
     
     background(255)
     
@@ -140,86 +143,97 @@ def draw():
         leftBall = player.x - radius
         rightBall = player.x + radius
         
-# Make Obstacles Reappear
-        if (rectLocation_1.x + 30) < 0 and (rectLocation_2.x + 30) < 0:
-            rectLocation_1.x = rectPos_5.x + 180
-            rectLocation_2.x = rectPos_5.x + 180
-        elif (rectPos.x + 30) < 0:
-            rectPos.x = rectLocation_1.x + 180
-        elif (rectPos_2.x + 30) < 0:
-            rectPos_2.x = rectPos.x + 180
-        elif (rectPos_3.x + 30) < 0 and (rectPos_4.x + 30) < 0:
-            rectPos_3.x = rectPos_2.x + 180
-            rectPos_4.x = rectPos_2.x + 180
-        elif (rectPos_5.x + 30) < 0:
-            rectPos_5.x = rectPos_4.x + 180 
-    
-# Obstacle 1
-        fill(0)
-        rect(rectLocation_1.x, rectLocation_1.y, 30, 90)
-        rect(rectLocation_2.x, rectLocation_2.y, 30, height)
-            
-# Collision for Obstacle 1
-        if (rightBall >= rectLocation_1.x and leftBall <= (rectLocation_1.x + 30)) and (bottomBall >= (height - (height - rectLocation_2.y)) or  topBall <= 90):
-             collision = 1
-# Score for passing Obstacle 1
-        if leftBall >= rectLocation_1.x + 30 and leftBall <= rectLocation_1.x +31:
-            score += 1
-        
-# Obstacle 2
-        rect(rectPos.x, rectPos.y, 30, 275)
-    
-# Collision for Obstacle 2
-        if rightBall >= rectPos.x and leftBall <= (rectPos.x + 30) and  topBall <= 275:
-            collision = 1
-# Score for passing Obstacle 2
-        if leftBall >= rectPos.x + 30 and leftBall <= rectPos.x + 31:
-            score += 1
-        
-# Obstacle 3
-        rect(rectPos_2.x, rectPos_2.y, 30, height)
-    
-# Collision for Obstacle 3
-        if rightBall >= rectPos_2.x and leftBall <= (rectPos_2.x + 30) and bottomBall >= (height - (height - rectPos_2.y)):
-             collision = 1
-# Score for Passing Obstacle 3
-        if leftBall >= rectPos_2.x + 30 and leftBall <= rectPos_2.x + 31:
-            score += 1
-    
-# Obstacle 4
-        rect(rectPos_3.x, rectPos_3.y, 30, 210)
-        rect(rectPos_4.x, rectPos_4.y, 30, height)
-        
-# Collsion for Obstacle 4
-        if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30)) and (bottomBall >= (height - (height - rectPos_4.y)) or  topBall <= 220):
-             collision = 1
-# Score for Passing Obstacle 4
-        if leftBall >= rectPos_4.x + 30 and leftBall <= rectPos_4.x + 31:
-            score += 1
-        
-# Obstacle 5
-        rect(rectPos_5.x, rectPos_5.y, 30, 275)
-    
-# Collision for Obstacle 5
-        if rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30) and  topBall <= 275:
-            collision = 1
-# Score for Passing Obstacle 5
-        if leftBall >= rectPos_5.x + 30 and leftBall <= rectPos_5.x + 31:
-            score += 1
-    
-# Obstacles Move When Player Crosses Point
+        # Obstacles Move When Player Crosses Point
         if player.x >= 190:
-            rectLocation_1.x += -speed
-            rectLocation_2.x += -speed
             rectPos.x += -speed
             rectPos_2.x += -speed
             rectPos_3.x += -speed
             rectPos_4.x += -speed
             rectPos_5.x += -speed
+            rectPos_6.x += -speed
+            rectPos_7.x += -speed
+        
+# Make Obstacles Reappear
+        if (rectPos.x + 30) < 0 and (rectPos_2.x + 30) < 0:
+            rectPos.x = rectPos_7.x + 180
+            rectPos_2.x = rectPos_7.x + 180
+        elif (rectPos_3.x + 30) < 0:
+            rectPos_3.x = rectPos.x + 180
+        elif (rectPos_4.x + 30) < 0:
+            rectPos_4.x = rectPos_3.x + 180
+        elif (rectPos_5.x + 30) < 0 and (rectPos_6.x + 30) < 0:
+            rectPos_5.x = rectPos_4.x + 180
+            rectPos_6.x = rectPos_4.x + 180
+        elif (rectPos_7.x + 30) < 0:
+            rectPos_7.x = rectPos_6.x + 180 
+    
+# Obstacle 1
+        fill(0)
+        rect(rectPos.x, rectPos.y, 30, 90)
+        rect(rectPos_2.x, rectPos_2.y, 30, height)
+            
+# Collision for Obstacle 1
+        if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or  topBall <= 90):
+             collision = 1
+# Score for passing Obstacle 1
+        if leftBall >= rectPos.x + 30 and currentobstacle == rectPos.x:
+            score += 1
+            currentobstacle = rectPos_3.x
+
+# Obstacle 2
+        rect(rectPos_3.x, rectPos_3.y, 30, 275)
+    
+# Collision for Obstacle 2
+        if rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and  topBall <= 275:
+            collision = 1
+# Score for passing Obstacle 2
+        if leftBall >= rectPos_3.x + 30 and currentobstacle == rectPos_3.x:
+            score += 1
+            currentobstacle = rectPos_4.x
+        
+# Obstacle 3
+        rect(rectPos_4.x, rectPos_4.y, 30, height)
+    
+# Collision for Obstacle 3
+        if rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30) and bottomBall >= (height - (height - rectPos_4.y)):
+             collision = 1
+# Score for Passing Obstacle 3
+        if leftBall >= rectPos_4.x + 30 and currentobstacle == rectPos_4.x:
+            score += 1
+            currentobstacle = rectPos_5.x
+    
+# Obstacle 4
+        rect(rectPos_5.x, rectPos_5.y, 30, 210)
+        rect(rectPos_6.x, rectPos_6.y, 30, height)
+        
+# Collsion for Obstacle 4
+        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_5.y)) or  topBall <= 220):
+             collision = 1
+# Score for Passing Obstacle 4
+        if leftBall >= rectPos_5.x + 30 and currentobstacle == rectPos_5.x:
+            score += 1
+            currentobstacle = rectPos_7.x
+        
+# Obstacle 5
+        rect(rectPos_7.x, rectPos_7.y, 30, 275)
+    
+# Collision for Obstacle 5
+        if rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and  topBall <= 275:
+            collision = 1
+# Score for Passing Obstacle 5
+        if leftBall >= rectPos_7.x + 30 and currentobstacle == rectPos_7.x:
+            score += 1
+            currentobstacle = rectPos.x
+    
     
 # Border Restrictions
         if topBall <= 0 or bottomBall >= height:
             collision = 1
+            
+# Score
+        fill(217, 177, 177)
+        textSize(18)
+        text(score, 20, 20)
         
 # Switch Screens from GAME OVER to Start or Game Sceen
     if collision == 1:
