@@ -1,4 +1,3 @@
-
 ballSize = 30
 radius = ballSize / 2
 # Obstacle 1 Location
@@ -116,7 +115,8 @@ def draw():
         textSize(90)
         text("Instructions", 175, 100)
         textSize(30)
-        text("""1. Click the mouse to jump. Double-tap the m
+        text("""1. Click the mouse to jump. 
+    Double-tap to jump for touchpad.
 2. Avoid the obstacles
 3. If the ball hits the obstacles, GAME OVER""", 175, 175)
         fill(0)
@@ -144,7 +144,7 @@ def draw():
         leftBall = player.x - radius
         rightBall = player.x + radius
         
-        # Obstacles Move When Player Crosses Point
+# Obstacles Move When Player Crosses Point
         if player.x >= 190:
             rectPos.x += -speed
             rectPos_2.x += -speed
@@ -172,12 +172,11 @@ def draw():
         fill(0)
         rect(rectPos.x, rectPos.y, 30, 90)
         rect(rectPos_2.x, rectPos_2.y, 30, height)
-
 # Collision for Obstacle 1
         if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or  topBall <= 90):
              collision = 1
 # Score for passing Obstacle 1
-        if leftBall >= rectPos.x + 30 and currentobstacle == rectPos.x:
+        if leftBall > rectPos.x + 30 and currentobstacle == rectPos.x:
             score += 1
             currentobstacle = rectPos_3.x
 
@@ -260,7 +259,7 @@ def mousePressed():
 # Press instructions button
     if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
         screen = "Instructions"
-#Press back button
+# Press back button
     if mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and mouseY >= 350 and screen == "Instructions": 
         screen = "startscreen"       
 # Play again from Game Over screen
