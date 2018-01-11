@@ -99,7 +99,7 @@ def draw():
 # Fake Ball
         fill(255, 0, 0)
         ellipse(fake.x, fake.y, 100, 100)
-    
+
 # Start button
         fill(0)
         rect(420, 150, 70, 30)
