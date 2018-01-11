@@ -1,3 +1,4 @@
+
 ballSize = 30
 radius = ballSize / 2
 # Obstacle 1 Location
@@ -28,7 +29,7 @@ currentobstacle = rectPos.x
 
 def setup():
     size(900, 400)
-    
+
 def reset():
     global player, speed, speedP, jump, screen, collision, score
     global rectPos, rectPos_2
@@ -37,7 +38,7 @@ def reset():
     global rectPos_5, rectPos_6
     global rectPos_7
     global currentobstacle
-    
+
 # Obstacle 1 Location
     rectPos = PVector(150, 0)
     rectPos_2 = PVector(150, 190)
@@ -48,18 +49,18 @@ def reset():
 # Obstacle 4
     rectPos_5 = PVector(690, 0)
     rectPos_6 = PVector(690, 310)
-#Obstacle 5
+# Obstacle 5
     rectPos_7 = PVector(870, 0)
 # Speed of Obstacles
     speed = 0.7
-#Player
+# Player
     player = PVector(50, 200)
 # Speed of Player
     speedP = PVector(1, 2)
     jump = -3.5
 # Screen
-    collision= 0
-    screen= "gamescreen"
+    collision = 0
+    screen = "gamescreen"
 # Score
     score = 0
     currentobstacle = rectPos.x
@@ -77,38 +78,38 @@ def draw():
     global collision
     global score
     global currentobstacle
-    
+
     background(255)
-    
-    #Start Screen
+
+# Start Screen
     if screen == "startscreen":
         background(0)
         fake = PVector(90, 310)
-        
+
         fill(255)
         textSize(90)
         text("Flappy Ellipse", 175, 100)
-        
-        # Fake Ball
+
+# Fake Ball
         fill(255, 0, 0)
         ellipse(fake.x, fake.y, 100, 100)
-                
-        # Start button
+
+# Start button
         fill(0)
         rect(420, 150, 70, 30)
         fill(255)
         textSize(30)
         text("Start", 420, 175)
-        
-        # Instruction button
+
+# Instruction button
         fill(0)
         rect(420, 200, 170, 30)
         fill(255)
         textSize(30)
         text("Instructions", 420, 225)  
-        
-        
-    #Instructions screen
+
+
+# Instructions screen
     if screen == "Instructions":
         background(0)
         fill(255)
@@ -123,7 +124,7 @@ def draw():
         fill(255)
         textSize(30)
         text("Back", 50, 375)
-        
+
 # Game Screen
     if screen == "gamescreen":
         background(255)
@@ -166,12 +167,12 @@ def draw():
             rectPos_6.x = rectPos_4.x + 180
         elif (rectPos_7.x + 30) < 0:
             rectPos_7.x = rectPos_6.x + 180 
-    
+
 # Obstacle 1
         fill(0)
         rect(rectPos.x, rectPos.y, 30, 90)
         rect(rectPos_2.x, rectPos_2.y, 30, height)
-            
+
 # Collision for Obstacle 1
         if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or  topBall <= 90):
              collision = 1
@@ -182,7 +183,6 @@ def draw():
 
 # Obstacle 2
         rect(rectPos_3.x, rectPos_3.y, 30, 275)
-    
 # Collision for Obstacle 2
         if rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and  topBall <= 275:
             collision = 1
@@ -190,10 +190,9 @@ def draw():
         if leftBall >= rectPos_3.x + 30 and currentobstacle == rectPos_3.x:
             score += 1
             currentobstacle = rectPos_4.x
-        
+
 # Obstacle 3
         rect(rectPos_4.x, rectPos_4.y, 30, height)
-    
 # Collision for Obstacle 3
         if rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30) and bottomBall >= (height - (height - rectPos_4.y)):
              collision = 1
@@ -201,11 +200,10 @@ def draw():
         if leftBall >= rectPos_4.x + 30 and currentobstacle == rectPos_4.x:
             score += 1
             currentobstacle = rectPos_5.x
-    
+
 # Obstacle 4
         rect(rectPos_5.x, rectPos_5.y, 30, 210)
         rect(rectPos_6.x, rectPos_6.y, 30, height)
-        
 # Collsion for Obstacle 4
         if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_5.y)) or  topBall <= 220):
              collision = 1
@@ -213,10 +211,9 @@ def draw():
         if leftBall >= rectPos_5.x + 30 and currentobstacle == rectPos_5.x:
             score += 1
             currentobstacle = rectPos_7.x
-        
+
 # Obstacle 5
         rect(rectPos_7.x, rectPos_7.y, 30, 275)
-    
 # Collision for Obstacle 5
         if rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and  topBall <= 275:
             collision = 1
@@ -224,17 +221,17 @@ def draw():
         if leftBall >= rectPos_7.x + 30 and currentobstacle == rectPos_7.x:
             score += 1
             currentobstacle = rectPos.x
-    
-    
+
+
 # Border Restrictions
         if topBall <= 0 or bottomBall >= height:
             collision = 1
-            
+
 # Score
         fill(217, 177, 177)
         textSize(18)
         text(score, 20, 20)
-        
+
 # Switch Screens from GAME OVER to Start or Game Sceen
     if collision == 1:
         speed = 0
@@ -247,11 +244,11 @@ def draw():
         fill(255, 0, 0)
         textSize(60)
         text("GAME OVER", 300, 100)
-            
+
         textSize(30)
         text("""Play Again
 Exit""", 350, 150) 
-    
+
 
 def mousePressed():
     global screen
