@@ -204,7 +204,7 @@ def draw():
         rect(rectPos_5.x, rectPos_5.y, 30, 210)
         rect(rectPos_6.x, rectPos_6.y, 30, height)
 # Collsion for Obstacle 4
-        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_5.y)) or  topBall <= 220):
+        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_6.y)) or  topBall <= 220):
              collision = 1
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_5.x + 30 and currentobstacle == rectPos_5.x:
