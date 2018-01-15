@@ -192,7 +192,9 @@ def draw():
         rect(rectPos.x, rectPos.y, 30, 90)
         rect(rectPos_2.x, rectPos_2.y, 30, height)
 # Collision for Obstacle 1 and 2
-        if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or topBall <= 90):
+        if ((rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and
+                (bottomBall >= (height - (height - rectPos_2.y)) or
+                    topBall <= 90)):
             collision = 1
 # Score for passing Obstacle 1 and 2
         if leftBall >= rectPos.x and currentobstacle.x == rectPos.x:
@@ -202,7 +204,8 @@ def draw():
 # Obstacle 3
         rect(rectPos_3.x, rectPos_3.y, 30, 275)
 # Collision for Obstacle 3
-        if rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and topBall <= 275:
+        if (rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and
+                topBall <= 275):
             collision = 1
 # Score for passing Obstacle 3
         if leftBall >= rectPos_3.x and currentobstacle.x == rectPos_3.x:
@@ -212,7 +215,8 @@ def draw():
 # Obstacle 4
         rect(rectPos_4.x, rectPos_4.y, 30, height)
 # Collision for Obstacle 4
-        if rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30) and bottomBall >= (height - (height - rectPos_4.y)):
+        if (rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30) and
+                bottomBall >= (height - (height - rectPos_4.y))):
             collision = 1
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_4.x and currentobstacle.x == rectPos_4.x:
@@ -223,7 +227,9 @@ def draw():
         rect(rectPos_5.x, rectPos_5.y, 30, 210)
         rect(rectPos_6.x, rectPos_6.y, 30, height)
 # Collsion for Obstacle 5 and 6
-        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_6.y)) or topBall <= 220):
+        if ((rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and
+                (bottomBall >= (height - (height - rectPos_6.y)) or
+                    topBall <= 220)):
             collision = 1
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
@@ -233,7 +239,8 @@ def draw():
 # Obstacle 7
         rect(rectPos_7.x, rectPos_7.y, 30, 275)
 # Collision for Obstacle 7
-        if rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and topBall <= 275:
+        if (rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and
+                topBall <= 275):
             collision = 1
 # Score for Passing Obstacle 7
         if leftBall >= rectPos_7.x and currentobstacle.x == rectPos_7.x:
@@ -272,19 +279,24 @@ def mousePressed():
     global screen
     global collision
 # Press start button
-    if mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and mouseY >= 150 and screen == "startscreen":
+    if (mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and
+            mouseY >= 150 and screen == "startscreen"):
         screen = "gamescreen"
         reset()
 # Press instructions button
-    if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
+    if (mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and
+            mouseY >= 200 and screen == "startscreen"):
         screen = "Instructions"
 # Press back button
-    if mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and mouseY >= 350 and screen == "Instructions":
+    if (mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and
+            mouseY >= 350 and screen == "Instructions"):
         screen = "startscreen"
 # Play again from Game Over screen
-    if mouseX <= 500 and mouseY <= 158 and mouseX >= 350 and mouseY >= 125 and screen == "gameover":
+    if (mouseX <= 500 and mouseY <= 158 and mouseX >= 350 and
+            mouseY >= 125 and screen == "gameover"):
         screen = "gamescreen"
         reset()
 # Go to Start Screen by Pressing Exit
-    if mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and mouseY >= 170 and screen == "gameover":
+    if (mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and
+            mouseY >= 170 and screen == "gameover"):
         screen = "startscreen"
