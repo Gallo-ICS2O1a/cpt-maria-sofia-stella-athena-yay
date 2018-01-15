@@ -1,6 +1,3 @@
-ballSize = 30
-radius = ballSize / 2
-# Obstacle 1 Location
 rectPos = PVector(150, 0)
 rectPos_2 = PVector(150, 190)
 # Obstacle 2 Location
@@ -270,9 +267,12 @@ def draw():
         textSize(60)
         text("GAME OVER", 300, 100)
 
+        fill(224, 158, 158)
         textSize(30)
         text("""Play Again
-Exit""", 350, 150)
+Exit""",  350, 150)
+        text("Score:", 350, 240)
+        text(score, 450, 240)
 
 
 def mousePressed():
@@ -300,3 +300,4 @@ def mousePressed():
     if (mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and
             mouseY >= 170 and screen == "gameover"):
         screen = "startscreen"
+
