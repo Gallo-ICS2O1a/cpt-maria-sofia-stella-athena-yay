@@ -254,7 +254,7 @@ def draw():
         textSize(18)
         text(score, 20, 20)
                
-        if score >= 10:
+        if score >= 5:
             background(0)
             fill(255, 0, 0)
             textSize(18)
