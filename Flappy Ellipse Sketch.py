@@ -25,6 +25,8 @@ collision= 0
 # Score
 score = 0
 currentobstacle = rectPos
+y = 100
+speed_b = 4.5
 
 
 def setup():
@@ -84,6 +86,8 @@ def draw():
     global rectPos_4
     global rectPos_5, rectPos_6
     global rectPos_7
+    global y
+    global speed_b
 
     background(255)
 
@@ -96,9 +100,18 @@ def draw():
         textSize(90)
         text("Flappy Ellipse", 175, 100)
 
-# Fake Ball
+#Fake Ball
+        y += speed_b 
+    
+        noStroke()
         fill(255, 0, 0)
-        ellipse(fake.x, fake.y, 100, 100)
+        ellipse(90, y, 100, 100)
+        
+        if y >= 400:
+            speed_b = -speed_b
+        elif y <= 0:
+            speed_b = -speed_b
+
 
 # Start button
         fill(0)
