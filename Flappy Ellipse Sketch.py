@@ -21,7 +21,7 @@ speedP = PVector(1, 2)
 jump = -3.5
 # Screen
 screen = "startscreen"
-collision= 0
+collision = 0
 # Score
 score = 0
 currentobstacle = rectPos
@@ -62,7 +62,7 @@ def reset():
     speedP = PVector(1, 2)
     jump = -3.5
 # Screen
-    collision= 0
+    collision = 0
     screen = "gamescreen"
 # Score
     score = 0
@@ -192,8 +192,8 @@ def draw():
         rect(rectPos.x, rectPos.y, 30, 90)
         rect(rectPos_2.x, rectPos_2.y, 30, height)
 # Collision for Obstacle 1 and 2
-        if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or  topBall <= 90):
-             collision = 1
+        if (rightBall >= rectPos.x and leftBall <= (rectPos.x + 30)) and (bottomBall >= (height - (height - rectPos_2.y)) or topBall <= 90):
+            collision = 1
 # Score for passing Obstacle 1 and 2
         if leftBall >= rectPos.x and currentobstacle.x == rectPos.x:
             score += 1
@@ -202,7 +202,7 @@ def draw():
 # Obstacle 3
         rect(rectPos_3.x, rectPos_3.y, 30, 275)
 # Collision for Obstacle 3
-        if rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and  topBall <= 275:
+        if rightBall >= rectPos_3.x and leftBall <= (rectPos_3.x + 30) and topBall <= 275:
             collision = 1
 # Score for passing Obstacle 3
         if leftBall >= rectPos_3.x and currentobstacle.x == rectPos_3.x:
@@ -213,7 +213,7 @@ def draw():
         rect(rectPos_4.x, rectPos_4.y, 30, height)
 # Collision for Obstacle 4
         if rightBall >= rectPos_4.x and leftBall <= (rectPos_4.x + 30) and bottomBall >= (height - (height - rectPos_4.y)):
-             collision = 1
+            collision = 1
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_4.x and currentobstacle.x == rectPos_4.x:
             score += 1
@@ -223,7 +223,7 @@ def draw():
         rect(rectPos_5.x, rectPos_5.y, 30, 210)
         rect(rectPos_6.x, rectPos_6.y, 30, height)
 # Collsion for Obstacle 5 and 6
-        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_6.y)) or  topBall <= 220):
+        if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_6.y)) or topBall <= 220):
             collision = 1
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
@@ -233,7 +233,7 @@ def draw():
 # Obstacle 7
         rect(rectPos_7.x, rectPos_7.y, 30, 275)
 # Collision for Obstacle 7
-        if rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and  topBall <= 275:
+        if rightBall >= rectPos_7.x and leftBall <= (rectPos_7.x + 30) and topBall <= 275:
             collision = 1
 # Score for Passing Obstacle 7
         if leftBall >= rectPos_7.x and currentobstacle.x == rectPos_7.x:
