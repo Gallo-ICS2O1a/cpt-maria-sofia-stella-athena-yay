@@ -1,3 +1,6 @@
+ballSize = 30
+radius = ballSize / 2
+# Obstacle 1 Location
 rectPos = PVector(150, 0)
 rectPos_2 = PVector(150, 190)
 # Obstacle 2 Location
