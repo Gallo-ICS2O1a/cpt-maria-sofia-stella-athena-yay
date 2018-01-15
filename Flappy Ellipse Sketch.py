@@ -100,13 +100,13 @@ def draw():
         textSize(90)
         text("Flappy Ellipse", 175, 100)
 
-#Fake Ball
-        y += speed_b 
-    
+# Fake Ball
+        y += speed_b
+
         noStroke()
         fill(255, 0, 0)
         ellipse(90, y, 100, 100)
-        
+
         if y >= 400:
             speed_b = -speed_b
         elif y <= 0:
@@ -125,7 +125,7 @@ def draw():
         rect(420, 200, 170, 30)
         fill(255)
         textSize(30)
-        text("Instructions", 420, 225)  
+        text("Instructions", 420, 225)
 
 
 # Instructions screen
@@ -185,7 +185,7 @@ def draw():
             rectPos_5.x = rectPos_4.x + 180
             rectPos_6.x = rectPos_4.x + 180
         elif (rectPos_7.x + 30) < 0:
-            rectPos_7.x = rectPos_6.x + 180 
+            rectPos_7.x = rectPos_6.x + 180
 
 # Obstacle 1 and 2
         fill(0)
@@ -224,7 +224,7 @@ def draw():
         rect(rectPos_6.x, rectPos_6.y, 30, height)
 # Collsion for Obstacle 5 and 6
         if (rightBall >= rectPos_5.x and leftBall <= (rectPos_5.x + 30)) and (bottomBall >= (height - (height - rectPos_6.y)) or  topBall <= 220):
-             collision = 1
+            collision = 1
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
             score += 1
@@ -265,22 +265,22 @@ def draw():
 
         textSize(30)
         text("""Play Again
-Exit""", 350, 150) 
+Exit""", 350, 150)
 
 
 def mousePressed():
     global screen
     global collision
 # Press start button
-    if mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and mouseY >= 150 and screen == "startscreen": 
+    if mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and mouseY >= 150 and screen == "startscreen":
         screen = "gamescreen"
         reset()
 # Press instructions button
     if mouseX <= 590 and mouseY <= 230 and mouseX >= 420 and mouseY >= 200 and screen == "startscreen":
         screen = "Instructions"
 # Press back button
-    if mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and mouseY >= 350 and screen == "Instructions": 
-        screen = "startscreen"       
+    if mouseX <= 150 and mouseY <= 380 and mouseX >= 50 and mouseY >= 350 and screen == "Instructions":
+        screen = "startscreen"
 # Play again from Game Over screen
     if mouseX <= 500 and mouseY <= 158 and mouseX >= 350 and mouseY >= 125 and screen == "gameover":
         screen = "gamescreen"
