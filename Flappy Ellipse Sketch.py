@@ -259,7 +259,7 @@ def draw():
         text(lastScore, 20, 20)
 
 # Change the Background Colours
-        if lastScore >= 5:
+        if lastScore >= 4 and lastScore <= 9:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -276,7 +276,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        if lastScore >= 10:
+        if lastScore >= 7 and lastScore <= 11:
             background(0)
             fill(255, 0, 0)
             textSize(18)
