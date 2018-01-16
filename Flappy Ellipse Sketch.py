@@ -23,7 +23,7 @@ jump = -3.5
 screen = "startscreen"
 collision = 0
 # Score
-score = 0
+highScore = 0
 currentobstacle = rectPos
 lastScore = 0
 # Red Ball
@@ -36,7 +36,7 @@ def setup():
 
 
 def reset():
-    global player, speed, speedP, jump, screen, collision, score, lastScore
+    global player, speed, speedP, jump, screen, collision, highScore, lastScore
     global rectPos, rectPos_2
     global rectPos_3
     global rectPos_4
@@ -67,7 +67,6 @@ def reset():
     collision = 0
     screen = "gamescreen"
 # Score
-    score = 0
     currentobstacle = rectPos
     lastScore = 0
 
@@ -81,7 +80,7 @@ def draw():
     global player
     global jump
     global collision
-    global score
+    global highScore
     global lastScore
     global currentobstacle
     global rectPos, rectPos_2
@@ -200,7 +199,7 @@ def draw():
             collision = 1
 # Score for passing Obstacle 1 and 2
         if leftBall >= rectPos.x and currentobstacle.x == rectPos.x:
-            score += 1
+            lastScore += 1
             currentobstacle = rectPos_3
 
 # Obstacle 3
@@ -211,7 +210,7 @@ def draw():
             collision = 1
 # Score for passing Obstacle 3
         if leftBall >= rectPos_3.x and currentobstacle.x == rectPos_3.x:
-            score += 1
+            lastScore += 1
             currentobstacle = rectPos_4
 
 # Obstacle 4
@@ -222,7 +221,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_4.x and currentobstacle.x == rectPos_4.x:
-            score += 1
+            lastScore += 1
             currentobstacle = rectPos_5
 
 # Obstacle 5 and 6
@@ -235,7 +234,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
-            score += 1
+            lastScore += 1
             currentobstacle = rectPos_7
 
 # Obstacle 7
@@ -246,7 +245,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 7
         if leftBall >= rectPos_7.x and currentobstacle.x == rectPos_7.x:
-            score += 1
+            lastScore += 1
             currentobstacle = rectPos
 
 
@@ -257,9 +256,9 @@ def draw():
 # Score
         fill(217, 177, 177)
         textSize(18)
-        text(score, 20, 20)
+        text(lastScore, 20, 20)
 
-        if score >= 5:
+        if lastScore >= 5:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -276,7 +275,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        if score >= 10:
+        if lastScore >= 10:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -307,12 +306,17 @@ def draw():
         textSize(60)
         text("GAME OVER", 300, 100)
 
+        if lastScore > highScore:
+            highScore = lastScore
+
         fill(224, 158, 158)
         textSize(30)
         text("""Play Again
 Exit""",  350, 150)
-        text("Score:", 350, 240)
-        text(score, 450, 240)
+        text("""High Score:
+Score:""", 350, 240)
+        text(highScore, 520, 240)
+        text(lastScore, 450, 280)
 
 
 def mousePressed():
