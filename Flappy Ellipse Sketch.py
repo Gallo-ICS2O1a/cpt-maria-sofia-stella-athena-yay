@@ -258,6 +258,7 @@ def draw():
         textSize(18)
         text(lastScore, 20, 20)
 
+# Change the Background Colours
         if lastScore >= 5:
             background(0)
             fill(255, 0, 0)
@@ -283,7 +284,7 @@ def draw():
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
-            m = second()
+            m = millis()
             fill(m % 255)
             rect(rectPos.x, rectPos.y, 30, 90)
             rect(rectPos_2.x, rectPos_2.y, 30, height)
