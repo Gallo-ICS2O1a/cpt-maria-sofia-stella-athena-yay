@@ -25,8 +25,10 @@ collision = 0
 # Score
 score = 0
 currentobstacle = rectPos
-y = 100
-speed_b = 4.5
+lastScore = 0
+# Red Ball
+redBall = PVector(90, 100)
+redSpeed = 4.5
 
 
 def setup():
@@ -34,7 +36,7 @@ def setup():
 
 
 def reset():
-    global player, speed, speedP, jump, screen, collision, score
+    global player, speed, speedP, jump, screen, collision, score, lastScore
     global rectPos, rectPos_2
     global rectPos_3
     global rectPos_4
@@ -67,6 +69,7 @@ def reset():
 # Score
     score = 0
     currentobstacle = rectPos
+    lastScore = 0
 
 
 def draw():
@@ -79,37 +82,37 @@ def draw():
     global jump
     global collision
     global score
+    global lastScore
     global currentobstacle
     global rectPos, rectPos_2
     global rectPos_3
     global rectPos_4
     global rectPos_5, rectPos_6
     global rectPos_7
-    global y
-    global speed_b
+    global redBall
+    global redSpeed
 
     background(255)
 
 # Start Screen
     if screen == "startscreen":
         background(0)
-        fake = PVector(90, 310)
 
         fill(255)
         textSize(90)
         text("Flappy Ellipse", 175, 100)
 
 # Fake Ball
-        y += speed_b
+        redBall.y += redSpeed
 
         noStroke()
         fill(255, 0, 0)
-        ellipse(90, y, 100, 100)
+        ellipse(redBall.x, redBall.y, 100, 100)
 
-        if y >= 400:
-            speed_b = -speed_b
-        elif y <= 0:
-            speed_b = -speed_b
+        if redBall.y >= 400:
+            redSpeed = -redSpeed
+        elif redBall.y <= 0:
+            redSpeed = -redSpeed
 
 
 # Start button
@@ -281,7 +284,7 @@ def draw():
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
-            m = millis()
+            m = second()
             fill(m % 255)
             rect(rectPos.x, rectPos.y, 30, 90)
             rect(rectPos_2.x, rectPos_2.y, 30, height)
@@ -337,4 +340,3 @@ def mousePressed():
     if (mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and
             mouseY >= 170 and screen == "gameover"):
         screen = "startscreen"
-
