@@ -29,6 +29,8 @@ lastScore = 0
 # Red Ball
 redBall = PVector(90, 100)
 redSpeed = 4.5
+# Background
+img = loadImage("cityBackground.png")
 
 
 def setup():
@@ -43,6 +45,7 @@ def reset():
     global rectPos_5, rectPos_6
     global rectPos_7
     global currentobstacle
+    global img
 
 # Obstacle 1 Location
     rectPos = PVector(150, 0)
@@ -69,6 +72,10 @@ def reset():
 # Score
     currentobstacle = rectPos
     lastScore = 0
+# Background 
+    img = loadImage("cityBackground.png")
+    img.resize(width, height)
+
 
 
 def draw():
@@ -90,9 +97,10 @@ def draw():
     global rectPos_7
     global redBall
     global redSpeed
+    global img
 
     background(255)
-
+    
 # Start Screen
     if screen == "startscreen":
         background(0)
@@ -147,7 +155,7 @@ def draw():
 
 # Game Screen
     if screen == "gamescreen":
-        background(255)
+        background(img)
 # Player
         fill(255, 0, 0)
         noStroke()
@@ -258,8 +266,7 @@ def draw():
         textSize(18)
         text(lastScore, 20, 20)
 
-# Change the Background Colours
-        if lastScore >= 4 and lastScore <= 9:
+        if lastScore >= 5:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -276,7 +283,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        if lastScore >= 7 and lastScore <= 11:
+        if lastScore >= 10:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -284,7 +291,7 @@ def draw():
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
-            m = millis()
+            m = second()
             fill(m % 255)
             rect(rectPos.x, rectPos.y, 30, 90)
             rect(rectPos_2.x, rectPos_2.y, 30, height)
