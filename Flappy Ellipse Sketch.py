@@ -283,7 +283,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        if lastScore >= 10 and lastScore <= 15:
+        elif lastScore >= 10 and lastScore <= 15:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -300,6 +300,25 @@ def draw():
             rect(rectPos_5.x, rectPos_5.y, 30, 210)
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
+            
+        elif lastScore >= 16 and lastScore <= 20:
+            background(0)
+            fill(255, 0, 0)
+            textSize(18)
+            text(lastScore, 20, 20)
+            fill(255, 255, 0)
+            noStroke()
+            ellipse(player.x, player.y, ballSize, ballSize)
+            fill(33, 28, 28)
+            rect(rectPos.x, rectPos.y, 30, 90)
+            rect(rectPos_2.x, rectPos_2.y, 30, height)
+            rect(rectPos_3.x, rectPos_3.y, 30, 275)
+            rect(rectPos_4.x, rectPos_4.y, 30, height)
+            rect(rectPos_5.x, rectPos_5.y, 30, 210)
+            rect(rectPos_6.x, rectPos_6.y, 30, height)
+            rect(rectPos_7.x, rectPos_7.y, 30, 275)
+            
+
 
 # Switch Screens from GAME OVER to Start or Game Sceen
     if collision == 1:
