@@ -308,7 +308,7 @@ def draw():
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
-            fill(33, 28, 28)
+            fill(18, 15, 15)
             rect(rectPos.x, rectPos.y, 30, 90)
             rect(rectPos_2.x, rectPos_2.y, 30, height)
             rect(rectPos_3.x, rectPos_3.y, 30, 275)
