@@ -72,10 +72,9 @@ def reset():
 # Score
     currentobstacle = rectPos
     lastScore = 0
-# Background 
+# Background
     img = loadImage("cityBackground.png")
     img.resize(width, height)
-
 
 
 def draw():
@@ -100,7 +99,7 @@ def draw():
     global img
 
     background(255)
-    
+
 # Start Screen
     if screen == "startscreen":
         background(0)
@@ -300,7 +299,7 @@ def draw():
             rect(rectPos_5.x, rectPos_5.y, 30, 210)
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
-            
+
         elif lastScore >= 16 and lastScore <= 20:
             background(0)
             fill(255, 0, 0)
@@ -317,7 +316,6 @@ def draw():
             rect(rectPos_5.x, rectPos_5.y, 30, 210)
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
-            
 
 
 # Switch Screens from GAME OVER to Start or Game Sceen
