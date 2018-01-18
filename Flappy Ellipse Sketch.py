@@ -25,12 +25,10 @@ collision = 0
 # Score
 highScore = 0
 currentobstacle = rectPos
-lastScore = 0
+score = 0
 # Red Ball
 redBall = PVector(90, 100)
 redSpeed = 4.5
-# Background
-img = loadImage("cityBackground.png")
 
 
 def setup():
@@ -38,7 +36,7 @@ def setup():
 
 
 def reset():
-    global player, speed, speedP, jump, screen, collision, highScore, lastScore
+    global player, speed, speedP, jump, screen, collision, highScore, score
     global rectPos, rectPos_2
     global rectPos_3
     global rectPos_4
@@ -71,10 +69,7 @@ def reset():
     screen = "gamescreen"
 # Score
     currentobstacle = rectPos
-    lastScore = 0
-# Background
-    img = loadImage("cityBackground.png")
-    img.resize(width, height)
+    score = 0
 
 
 def draw():
@@ -87,7 +82,7 @@ def draw():
     global jump
     global collision
     global highScore
-    global lastScore
+    global score
     global currentobstacle
     global rectPos, rectPos_2
     global rectPos_3
@@ -96,8 +91,7 @@ def draw():
     global rectPos_7
     global redBall
     global redSpeed
-    global img
-
+    
     background(255)
 
 # Start Screen
@@ -143,7 +137,8 @@ def draw():
         textSize(90)
         text("Instructions", 175, 100)
         textSize(30)
-        text("""1. Click the mouse to jump. Double-tap the m
+        text("""1. Click the mouse to jump.
+    Double-tap the touchpad to jump.
 2. Avoid the obstacles
 3. If the ball hits the obstacles, GAME OVER""", 175, 175)
         fill(0)
@@ -154,7 +149,7 @@ def draw():
 
 # Game Screen
     if screen == "gamescreen":
-        background(img)
+        background(255)
 # Player
         fill(255, 0, 0)
         noStroke()
@@ -206,7 +201,7 @@ def draw():
             collision = 1
 # Score for passing Obstacle 1 and 2
         if leftBall >= rectPos.x and currentobstacle.x == rectPos.x:
-            lastScore += 1
+            score += 1
             currentobstacle = rectPos_3
 
 # Obstacle 3
@@ -217,7 +212,7 @@ def draw():
             collision = 1
 # Score for passing Obstacle 3
         if leftBall >= rectPos_3.x and currentobstacle.x == rectPos_3.x:
-            lastScore += 1
+            score += 1
             currentobstacle = rectPos_4
 
 # Obstacle 4
@@ -228,7 +223,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_4.x and currentobstacle.x == rectPos_4.x:
-            lastScore += 1
+            score += 1
             currentobstacle = rectPos_5
 
 # Obstacle 5 and 6
@@ -241,7 +236,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
-            lastScore += 1
+            score += 1
             currentobstacle = rectPos_7
 
 # Obstacle 7
@@ -252,7 +247,7 @@ def draw():
             collision = 1
 # Score for Passing Obstacle 7
         if leftBall >= rectPos_7.x and currentobstacle.x == rectPos_7.x:
-            lastScore += 1
+            score += 1
             currentobstacle = rectPos
 
 
@@ -263,13 +258,13 @@ def draw():
 # Score
         fill(217, 177, 177)
         textSize(18)
-        text(lastScore, 20, 20)
+        text(score, 20, 20)
 
-        if lastScore >= 5 and lastScore <= 9:
+        if score >= 5 and score <= 9:
             background(0)
             fill(255, 0, 0)
             textSize(18)
-            text(lastScore, 20, 20)
+            text(score, 20, 20)
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
@@ -282,11 +277,11 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif lastScore >= 10 and lastScore <= 15:
+        elif score >= 10 and score <= 15:
             background(0)
             fill(255, 0, 0)
             textSize(18)
-            text(lastScore, 20, 20)
+            text(score, 20, 20)
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
@@ -300,11 +295,11 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif lastScore >= 16 and lastScore <= 20:
+        elif score >= 16 and score <= 20:
             background(0)
             fill(255, 0, 0)
             textSize(18)
-            text(lastScore, 20, 20)
+            text(score, 20, 20)
             fill(255, 255, 0)
             noStroke()
             ellipse(player.x, player.y, ballSize, ballSize)
@@ -331,8 +326,8 @@ def draw():
         textSize(60)
         text("GAME OVER", 300, 100)
 
-        if lastScore > highScore:
-            highScore = lastScore
+        if score > highScore:
+            highScore = score
 
         fill(224, 158, 158)
         textSize(30)
@@ -341,7 +336,7 @@ Exit""",  350, 150)
         text("""High Score:
 Score:""", 350, 240)
         text(highScore, 520, 240)
-        text(lastScore, 450, 280)
+        text(score, 450, 280)
 
 
 def mousePressed():
