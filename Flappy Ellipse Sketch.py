@@ -31,7 +31,6 @@ redBall = PVector(90, 100)
 redSpeed = 4.5
 
 
-
 def setup():
     size(900, 400)
 
@@ -74,24 +73,19 @@ def reset():
 
 
 def draw():
-    global ballSize
-    global radius
-    global speed
+    global ballSize, radius
+    global speed, speedP
     global screen
-    global speedP
-    global player
-    global jump
+    global player, jump
     global collision
-    global highScore
-    global lastScore
+    global highScore, lastScore
     global currentobstacle
     global rectPos, rectPos_2
     global rectPos_3
     global rectPos_4
     global rectPos_5, rectPos_6
     global rectPos_7
-    global redBall
-    global redSpeed
+    global redBall, redSpeed
 
     background(255)
 
@@ -138,7 +132,8 @@ def draw():
         textSize(90)
         text("Instructions", 175, 100)
         textSize(30)
-        text("""1. Click the mouse to jump. Double-tap the m
+        text("""1. Click the mouse to jump.
+    Double-tap the touchpad to jump.
 2. Avoid the obstacles
 3. If the ball hits the obstacles, GAME OVER""", 175, 175)
         fill(0)
