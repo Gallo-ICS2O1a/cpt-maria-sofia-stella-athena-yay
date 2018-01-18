@@ -72,9 +72,6 @@ def reset():
 # Score
     currentobstacle = rectPos
     lastScore = 0
-# Background
-    img = loadImage("cityBackground.png")
-    img.resize(width, height)
 
 
 def draw():
@@ -154,7 +151,7 @@ def draw():
 
 # Game Screen
     if screen == "gamescreen":
-        background(img)
+        background(255)
 # Player
         fill(255, 0, 0)
         noStroke()
