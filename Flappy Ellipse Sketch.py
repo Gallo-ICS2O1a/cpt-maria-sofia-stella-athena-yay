@@ -272,7 +272,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif score >= 16 and score <= 20:
+        elif score >= 10 and score <= 15:
             background(0)
             fill(255, 0, 0)
             textSize(18)
