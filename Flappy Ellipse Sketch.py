@@ -341,3 +341,4 @@ def mousePressed():
     if (mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and
             mouseY >= 170 and screen == "gameover"):
         screen = "startscreen"
+ 
