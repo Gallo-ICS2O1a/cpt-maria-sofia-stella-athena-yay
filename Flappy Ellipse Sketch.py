@@ -30,6 +30,12 @@ score = 0
 redBall = PVector(90, 100)
 redSpeed = 4.5
 
+pointsElasped = 0
+points = 0
+
+pointsElasped_2 = 0
+points_2 = 0
+
 
 def setup():
     size(900, 400)
@@ -43,6 +49,7 @@ def reset():
     global rectPos_5, rectPos_6
     global rectPos_7
     global currentobstacle
+    global pointsElasped, points, pointsElasped_2, points_2
 
 
 # Obstacle 1 Location
@@ -71,6 +78,11 @@ def reset():
     currentobstacle = rectPos
     score = 0
 
+    pointsElasped = 0
+    points = 0
+    
+    pointsElasped_2 = 0
+    points_2 = 0
 
 def draw():
     global ballSize, radius
@@ -86,6 +98,7 @@ def draw():
     global rectPos_5, rectPos_6
     global rectPos_7
     global redBall, redSpeed
+    global pointsElasped, points, pointsElasped_2, points_2
 
     background(255)
 
@@ -145,6 +158,7 @@ def draw():
 # Game Screen
     if screen == "gamescreen":
         background(255)
+
 # Player
         fill(255, 0, 0)
         noStroke()
@@ -197,6 +211,8 @@ def draw():
 # Score for passing Obstacle 1 and 2
         if leftBall >= rectPos.x and currentobstacle.x == rectPos.x:
             score += 1
+            points += 1
+            points_2 += 1
             currentobstacle = rectPos_3
 
 # Obstacle 3
@@ -208,6 +224,8 @@ def draw():
 # Score for passing Obstacle 3
         if leftBall >= rectPos_3.x and currentobstacle.x == rectPos_3.x:
             score += 1
+            points += 1
+            points_2 += 1
             currentobstacle = rectPos_4
 
 # Obstacle 4
@@ -219,6 +237,8 @@ def draw():
 # Score for Passing Obstacle 4
         if leftBall >= rectPos_4.x and currentobstacle.x == rectPos_4.x:
             score += 1
+            points += 1
+            points_2 += 1
             currentobstacle = rectPos_5
 
 # Obstacle 5 and 6
@@ -232,6 +252,8 @@ def draw():
 # Score for Passing Obstacle 5 and 6
         if leftBall >= rectPos_5.x and currentobstacle.x == rectPos_5.x:
             score += 1
+            points += 1
+            points_2 += 1
             currentobstacle = rectPos_7
 
 # Obstacle 7
@@ -243,6 +265,8 @@ def draw():
 # Score for Passing Obstacle 7
         if leftBall >= rectPos_7.x and currentobstacle.x == rectPos_7.x:
             score += 1
+            points += 1
+            points_2 += 1
             currentobstacle = rectPos
 
 
@@ -255,7 +279,9 @@ def draw():
         textSize(18)
         text(score, 20, 20)
 
-        if score >= 5 and score <= 9:
+        pointsElasped = points
+
+        if pointsElasped >= 2 and pointsElasped <= 4:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -272,7 +298,12 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif score >= 10 and score <= 15:
+        elif pointsElasped > 4:
+            points = 0
+
+        pointsElasped_2 = points_2
+
+        if pointsElasped_2 >= 6 and pointsElasped_2 <= 9:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -288,6 +319,9 @@ def draw():
             rect(rectPos_5.x, rectPos_5.y, 30, 210)
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
+
+        elif pointsElasped_2 > 9:
+            points_2 = 0
 
 
 # Switch Screens from GAME OVER to Start or Game Sceen
@@ -318,7 +352,7 @@ Score:""", 350, 240)
 
 def mousePressed():
     global screen
-    global collision
+
 # Press start button
     if (mouseX <= 490 and mouseY <= 180 and mouseX >= 420 and
             mouseY >= 150 and screen == "startscreen"):
