@@ -77,12 +77,12 @@ def reset():
 # Score
     currentobstacle = rectPos
     score = 0
-
+# To Change Colour Scheme
     pointsElasped = 0
     points = 0
-    
     pointsElasped_2 = 0
     points_2 = 0
+
 
 def draw():
     global ballSize, radius
@@ -375,4 +375,3 @@ def mousePressed():
     if (mouseX <= 450 and mouseY <= 203 and mouseX >= 350 and
             mouseY >= 170 and screen == "gameover"):
         screen = "startscreen"
- 
