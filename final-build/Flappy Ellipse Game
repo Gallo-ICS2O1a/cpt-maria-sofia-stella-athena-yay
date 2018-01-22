@@ -280,7 +280,7 @@ def draw():
 
         pointsElasped = points
 
-        if pointsElasped >= 2 and pointsElasped <= 4:
+        if pointsElasped >= 3 and pointsElasped <= 5:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -297,12 +297,12 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif pointsElasped > 4:
+        elif pointsElasped > 5:
             points = 0
 
         pointsElasped_2 = points_2
 
-        if pointsElasped_2 >= 6 and pointsElasped_2 <= 9:
+        if pointsElasped_2 >= 7 and pointsElasped_2 <= 10:
             background(0)
             fill(255, 0, 0)
             textSize(18)
@@ -319,7 +319,7 @@ def draw():
             rect(rectPos_6.x, rectPos_6.y, 30, height)
             rect(rectPos_7.x, rectPos_7.y, 30, 275)
 
-        elif pointsElasped_2 > 9:
+        elif pointsElasped_2 > 10:
             points_2 = 0
 
 
