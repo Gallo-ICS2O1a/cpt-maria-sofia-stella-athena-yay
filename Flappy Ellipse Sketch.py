@@ -29,10 +29,9 @@ score = 0
 # Red Ball
 redBall = PVector(90, 100)
 redSpeed = 4.5
-
+# To Change Colour Scheme
 pointsElasped = 0
 points = 0
-
 pointsElasped_2 = 0
 points_2 = 0
 
